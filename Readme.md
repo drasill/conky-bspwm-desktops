@@ -13,11 +13,19 @@ An horizontal conky, scale = 40
 
 TIMTOWTDI, but for example :
 
-```
+```bash
 cd
 mkdir -p .config/conky/lua
 cd .config/conky/lua
 git clone https://github.com/drasill/conky-bspwm-desktops.git bspwm-desktops
+```
+
+## Dependencies
+
+You'll need the `dkjson` lua package :
+
+```bash
+sudo luarocks install dkjson
 ```
 
 # Usage
