@@ -36,6 +36,8 @@ function conky_bspwm_desktops(init_x, init_y, scale)
 
 	local monitor = tab.monitors[1]
 
+	local focusedDesktopId = monitor.focusedDesktopId
+
 	local monW = monitor.rectangle.width
 	local monH = monitor.rectangle.height
 	monW = monW - monitor.padding.left - monitor.padding.right
@@ -99,6 +101,20 @@ function conky_bspwm_desktops(init_x, init_y, scale)
 		cairo_rectangle(cairo, round(cx), round(cy), round(dw), round(dh))
 		cairo_fill(cairo)
 
+		-- draw shadow on focusedDesktopId
+		if desktop.id == focusedDesktopId then
+			cairo_rectangle(cairo, round(cx), round(cy), round(dw), round(dh))
+			cairo_set_source_rgba(cairo, 0.1, 0.8, 0.2, 0.8)
+			cairo_stroke(cairo)
+			cairo_rectangle(cairo, round(cx-1), round(cy-1), round(dw+2), round(dh+2))
+			cairo_set_source_rgba(cairo, 0.1, 0.8, 0.2, 0.5)
+			cairo_stroke(cairo)
+			cairo_rectangle(cairo, round(cx-2), round(cy-2), round(dw+4), round(dh+4))
+			cairo_set_source_rgba(cairo, 0.1, 0.8, 0.2, 0.2)
+			cairo_stroke(cairo)
+		end
+
+		-- draw childs (nodes)
 		if desktop.root then
 			draw_childs(desktop.root)
 		end
