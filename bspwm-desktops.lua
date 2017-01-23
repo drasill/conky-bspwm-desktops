@@ -66,6 +66,8 @@ function conky_bspwm_desktops(init_x, init_y, scale)
 			cairo_rectangle(cairo, round(x), round(y), round(w), round(h))
 			if root.id == focusedNodeId then
 				cairo_set_source_rgba(cairo, 0.2, 0.85, 0.6, 0.8)
+			elseif root.client.urgent then
+				cairo_set_source_rgba(cairo, 0.85, 0.2, 0.6, 0.8)
 			else
 				cairo_set_source_rgba(cairo, 0.2, 0.45, 0.6, 0.5)
 			end
