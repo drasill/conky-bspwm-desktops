@@ -121,6 +121,21 @@ function conky_bspwm_desktops(init_x, init_y, scale)
 			draw_childs(desktop.root)
 		end
 
+		-- draw X on monocle
+		if desktop.layout == "monocle" then
+			cairo_set_antialias(cairo, CAIRO_ANTIALIAS_DEFAULT)
+			cairo_move_to(cairo, round(cx), round(cy))
+			cairo_rel_line_to(cairo, round(dw), round(dh))
+			cairo_move_to(cairo, round(cx+dw), round(cy))
+			cairo_rel_line_to(cairo, round(-dw), round(dh))
+			cairo_set_source_rgba(cairo, 0, 0, 0, 0.3)
+			cairo_set_line_width(cairo, 3);
+			cairo_stroke(cairo)
+			cairo_set_antialias(cairo, CAIRO_ANTIALIAS_NONE)
+		end
+
+
+
 		cx = math.floor(cx + dw + gap + 0.5)
 	end
 
