@@ -58,8 +58,8 @@ function conky_bspwm_desktops(init_x, init_y, scale)
 			else
 				coords = root.client.tiledRectangle
 			end
-			local x = cx + coords.x / scale
-			local y = cy + coords.y / scale
+			local x = cx + (coords.x - monitor.padding.left) / scale
+			local y = cy + (coords.y - monitor.padding.top ) / scale
 			local w = coords.width / scale
 			local h = coords.height / scale
 
