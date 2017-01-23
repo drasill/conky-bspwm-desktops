@@ -22,7 +22,6 @@ function conky_bspwm_desktops(init_x, init_y, scale)
 	local file = io.popen("bspc wm -d")
 	local output = file:read("*a")
 	file:close()
-	-- print(output)
 	local json = require("dkjson")
 	local tab = json.decode(output)
 
